@@ -76,5 +76,6 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get upgrade
     apt-get install -y nginx
+    mkdir -p /var/www/nombre_web/html 
   SHELL
 end
