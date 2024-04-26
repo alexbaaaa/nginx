@@ -82,5 +82,9 @@ Vagrant.configure("2") do |config|
     cp -r -v /vagrant/alexba  /etc/nginx/sites-available
     ln -fs /etc/nginx/sites-available/alexba /etc/nginx/sites-enabled/
     systemctl restart nginx
+    apt-get install vsftpd
+    mkdir -p /home/alejandro/ftp
+    cp /vagrant/vsftpd.crt /etc/ssl/certs/
+    cp /vagrant/vsftpd.key /etc/ssl/private
   SHELL
 end
