@@ -34,8 +34,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
-
+  config.vm.network "private_network", ip: "192.168.57.15"
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
@@ -76,7 +75,12 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get upgrade
     apt-get install -y nginx
-    mkdir -p /var/www/webPrueba/html 
-    cp -r -v /vagrant/static-website-example /var/www/webPrueba/html 
+    mkdir -p /var/www/webPrueba/
+    cp -r -v /vagrant/static-website-example/* /var/www/webPrueba/
+    chown -R www-data:www-data /var/www/webPrueba/
+    chmod -R 755 /var/www/webPrueba
+    cp -r -v /vagrant/alexba  /etc/nginx/sites-available
+    ln -fs /etc/nginx/sites-available/alexba /etc/nginx/sites-enabled/
+    systemctl restart nginx
   SHELL
 end
