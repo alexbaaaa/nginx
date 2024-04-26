@@ -76,6 +76,7 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get upgrade
     apt-get install -y nginx
-    mkdir -p /var/www/nombre_web/html 
+    mkdir -p /var/www/webPrueba/html 
+    cp -r -v /vagrant/static-website-example /var/www/webPrueba/html 
   SHELL
 end
